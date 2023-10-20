@@ -169,8 +169,11 @@ def clean_data(state):
     rent[['baths', 'beds', 'toilets', 'rent']] = rent[['baths', 'beds', 'toilets', 'rent']].astype(int)
     
     rent['room_index'] = rent['beds'] + rent['baths'] + rent['toilets']
+
+    rent['state'] = state.lower()
     
-    rent.to_csv(f'properties_{state.lower()}_rent.csv')
+    print(rent.head())
+    #rent.to_csv(f'properties_{state.lower()}_rent.csv')
     
     return rent
    
