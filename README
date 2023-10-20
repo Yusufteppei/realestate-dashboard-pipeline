@@ -1,0 +1,10 @@
+PGADMIN URL: localhost:8002
+
+--- WITHIN DOCKER NETWORK ---
+
+PGADMIN EMAIL: root@root.com
+PGADMIN PASSWORD: unhackable
+POSTGRES DB HOST NAME: db
+POSTGRES DB USER: postgres
+POSTGRES DB DB: postgres
+POSTGRES DB PASSWORD: unhackable

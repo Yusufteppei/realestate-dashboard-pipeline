@@ -121,7 +121,7 @@ def fetch_all_pages(output_df, url):
             page += 1 
         except AttributeError:
             raise AttributeError
-        if page == 4:#355:
+        if page == 355:
             break
 
 def count_(s):
