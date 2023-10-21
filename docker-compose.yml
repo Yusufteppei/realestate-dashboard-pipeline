@@ -35,11 +35,11 @@ services:
     depends_on:
       - db
   
-  pdadmin:
+  pgadmin:
 
     image: dpage/pgadmin4
 
-    container_name: pgadmin_container
+    container_name: properties_pgadmin_container
 
     environment:
       - PGADMIN_DEFAULT_EMAIL=root@root.com
@@ -48,5 +48,25 @@ services:
     ports:
       - 8002:80
 
-    restart: always
+    depends_on:
+      - scraper
+
+
+  dashboard:
+
+    build: dashboard
+
+    container_name: properties_dashboard
+
+    ports:
+      - 8003:8050
+
+    environment:
+      - POSTGRES_PASSWORD=unhackable
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_HOST=db
+
+    depends_on:
+      - scraper
 
