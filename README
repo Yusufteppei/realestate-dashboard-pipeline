@@ -4,6 +4,8 @@ PGADMIN URL: localhost:8002
 
 PGADMIN EMAIL: root@root.com
 PGADMIN PASSWORD: unhackable
+
+
 POSTGRES DB HOST NAME: db
 POSTGRES DB USER: postgres
 POSTGRES DB DB: postgres

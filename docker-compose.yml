@@ -20,7 +20,9 @@ services:
       - POSTGRES_DB=postgres
 
   scraper:
-    build: .
+    build: 
+      context: ./scraper
+
     volumes:
       - .:/home/scraper
 
@@ -54,7 +56,8 @@ services:
 
   dashboard:
 
-    build: dashboard
+    build:
+      context: ./dashboard
 
     container_name: properties_dashboard
 
@@ -69,4 +72,15 @@ services:
 
     depends_on:
       - scraper
+    
+  
+  jenkins:
+
+    image: jenkins/jenkins:2.414.3-alpine-jdk21-preview
+
+    ports:
+      - 8004:8080
+      - 50000:50000
+    
+    restart: on-failure
 
