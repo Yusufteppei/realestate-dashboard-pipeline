@@ -1,7 +1,8 @@
 import os
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+import dash_bootstrap_components as dbc
+from dash import html
 import pandas as pd
 import sqlalchemy
 
@@ -12,13 +13,46 @@ host = os.environ.get('POSTGRES_HOST')
 
 engine = sqlalchemy.create_engine(f"postgresql://{user}:{password}@{host}:5432/db")
 
-app = dash.Dash()
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-app.layout = html.Div(children=[
-    html.H1("Dashboard", style={'textAlign': 'center'}),
 
-    dcc.Graph()
-])
+
+app.layout = html.Div(
+
+    children=[
+
+        html.H1("Dashboard", style={'textAlign': 'center'}),
+
+        dbc.Row(
+            [
+                dbc.Col(
+                    dcc.Graph(
+                    figure={
+                        'data': [
+                            {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
+                        ]
+                    }
+                ),
+                ),
+                dbc.Col(
+                    dcc.Graph(
+                    figure={
+                        'data': [
+                            {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
+                        ]
+                    }
+                )
+                ),
+                dbc.Col(),
+                
+                   
+            ]
+        ),    
+
+        
+
+    ]
+)
 
 if __name__=="__main__":
-    app.run_server(debug=True)
+    app.run_server(host="0.0.0.0", debug=True)
