@@ -73,6 +73,8 @@ services:
     depends_on:
       - scraper
     
+    restart: always
+    
   
   jenkins:
 
@@ -82,5 +84,5 @@ services:
       - 8004:8080
       - 50000:50000
     
-    restart: on-failure
+
 

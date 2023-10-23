@@ -4,17 +4,34 @@ from dash import dcc
 import dash_bootstrap_components as dbc
 from dash import html
 import pandas as pd
-import sqlalchemy
+from sqlalchemy import create_engine
+import psycopg2 
 
 user = os.environ.get('POSTGRES_USER')
 db = os.environ.get('POSTGRES_DB')
 password = os.environ.get('POSTGRES_PASSWORD')
 host = os.environ.get('POSTGRES_HOST')
 
-engine = sqlalchemy.create_engine(f"postgresql://{user}:{password}@{host}:5432/db")
+conn = psycopg2.connect(
+        database=db,
+        user=user,
+        password=password,
+        host=host,
+        port=5432
+    )
 
+engine = create_engine(f'postgresql+psycopg2://postgres:unhackable@{host}:5432/postgres')
+
+#cursor = conn.cursor()
+#cursor.execute("SELECT * FROM properties")
+
+df = pd.read_sql_table("properties", con=engine)
+
+print(df.head())
+
+
+conn.close()
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
-
 
 
 app.layout = html.Div(
@@ -27,21 +44,21 @@ app.layout = html.Div(
             [
                 dbc.Col(
                     dcc.Graph(
-                    figure={
-                        'data': [
-                            {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
-                        ]
+                        figure={
+                            'data': [
+                                {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
+                            ]
                     }
                 ),
                 ),
                 dbc.Col(
                     dcc.Graph(
-                    figure={
-                        'data': [
-                            {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
-                        ]
-                    }
-                )
+                        figure={
+                            'data': [
+                                {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
+                            ]
+                        }
+                    )
                 ),
                 dbc.Col(),
                 
