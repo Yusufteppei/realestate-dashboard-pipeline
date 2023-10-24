@@ -12,29 +12,28 @@ db = os.environ.get('POSTGRES_DB')
 password = os.environ.get('POSTGRES_PASSWORD')
 host = os.environ.get('POSTGRES_HOST')
 
-conn = psycopg2.connect(
-        database=db,
-        user=user,
-        password=password,
-        host=host,
-        port=5432
-    )
+def get_data():
+    try:
+        
+        engine = create_engine(f'postgresql+psycopg2://postgres:unhackable@{host}:5432/postgres')
 
-engine = create_engine(f'postgresql+psycopg2://postgres:unhackable@{host}:5432/postgres')
+        #cursor = conn.cursor()
+        #cursor.execute("SELECT * FROM properties")
 
-#cursor = conn.cursor()
-#cursor.execute("SELECT * FROM properties")
+        df = pd.read_sql_table("properties", con=engine)
+    except:
+        df = pd.DataFrame({'rent': []})
 
-df = pd.read_sql_table("properties", con=engine)
+    return df
 
-print(df.head())
+df = get_data()
+
 MEAN_PRICE = df['rent'].mean()
 MEDIAN_PRICE = df['rent'].median()
 PROPERTY_COUNT = df.shape[0]
 
 
 
-conn.close()
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
@@ -51,8 +50,10 @@ app.layout = html.Div(
                         dbc.Row(
                             [
                                 dbc.Col(
-                                    html.Div(["Mean Price"]),
-                                    html.Div([MEAN_PRICE])
+                                    [
+                                        html.Div(["Mean Price"]),
+                                        html.Div([MEAN_PRICE])
+                                    ]
                                 )
                             ]
                         )
@@ -64,8 +65,10 @@ app.layout = html.Div(
                         dbc.Row(
                             [
                                 dbc.Col(
-                                    html.Div(["Median Price"]),
-                                    html.Div([MEDIAN_PRICE])
+                                    [
+                                        html.Div(["Median Price"]),
+                                        html.Div([MEDIAN_PRICE])
+                                    ]
                                 )
                             ]
                         )
@@ -78,8 +81,10 @@ app.layout = html.Div(
                         dbc.Row(
                             [
                                 dbc.Col(
-                                    html.Div(["Property Count"]),
-                                    html.Div([PROPERTY_COUNT])
+                                    [
+                                        html.Div(["Property Count"]),
+                                        html.Div([PROPERTY_COUNT])
+                                    ]
                                 )
                             ]
                         )
