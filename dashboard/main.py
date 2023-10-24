@@ -30,6 +30,7 @@ df = pd.read_sql_table("properties", con=engine)
 print(df.head())
 MEAN_PRICE = df['rent'].mean()
 MEDIAN_PRICE = df['rent'].median()
+PROPERTY_COUNT = df.shape[0]
 
 
 
@@ -43,6 +44,35 @@ app.layout = html.Div(
 
         html.H1("Dashboard", style={'textAlign': 'center'}),
 
+        dbc.Row(
+            dbc.Col(
+                dbc.Row(
+                    dbc.Col(
+                        html.Div("Mean Price"),
+                        html.Div(MEAN_PRICE)
+                    )
+                )
+            ),
+            
+            dbc.Col(
+                dbc.Row(
+                    dbc.Col(
+                        html.Div("Median Price"),
+                        html.Div(MEDIAN_PRICE)
+                    )
+                )
+            ),
+
+            dbc.Col(
+                dbc.Row(
+                    dbc.Col(
+                        html.Div("Properties"),
+                        html.Div(PROPERTY_COUNT)
+                    )
+                )
+            ),
+        ),
+        
         dbc.Row(
             [
                 dbc.Col(
@@ -63,9 +93,16 @@ app.layout = html.Div(
                         }
                     )
                 ),
-                dbc.Col(),
+                dbc.Col(
+                    dcc.Graph(
+                        figure={
+                            'data': [
+                                {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
+                            ]
+                        }
+                    )
+                ),
                 
-                   
             ]
         ),    
 

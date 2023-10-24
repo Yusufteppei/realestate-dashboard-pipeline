@@ -10,6 +10,8 @@ RUN apk add git
 
 RUN git clone https://github.com/Yusufteppei/realestate-dashboard-pipeline.git
 
+RUN cd realestate-dashboard-pipeline
+
 RUN python realestate-dashboard-pipeline/scraper/scrape.py;
 
 CMD python realestate-dashboard-pipeline/scraper/main.py; python -m http.server 8000
