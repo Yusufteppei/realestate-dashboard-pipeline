@@ -9,6 +9,20 @@ import mysql.connector
                     
 from sqlalchemy import create_engine
    
+POSTGRES_HOST = os.environ.get('POSTGRES_HOST')
+MYSQL_HOST = os.environ.get('MYSQL_HOST')
+
+COPY_CSV_QUERY = """
+    COPY properties( toilets, beds, baths, rent, city)
+    FROM 'properties_abuja_rent.csv'
+    DELIMITER ','
+    CSV HEADER;
+"""
+
+CREATE_TABLE_QUERY = """
+    CREATE TABLE IF NOT EXISTS properties ( toilets SMALLINT, beds SMALLINT, baths SMALLINT, rent INT, city VARCHAR(128));
+
+"""
 
 POSTGRES_HOST = os.environ.get('POSTGRES_HOST')
 MYSQL_HOST = os.environ.get('MYSQL_HOST')
@@ -174,6 +188,7 @@ def clean_data(state):
     
     print(rent.head())
     rent.to_csv(f'properties_{state.lower()}_rent.csv')
+    rent.to_sql(f'properties_{state.lower()}_rent.sql')
     
     return rent
    
@@ -236,4 +251,4 @@ def push_to_mysql_db():
 #print( fetch_page(df, 'https://www.propertypro.ng/property-for-rent/in/abuja/', 2) )
 rent = get_state_data('abuja')
 
-#push_to_postgres_db(rent)
+push_to_postgres_db(rent)

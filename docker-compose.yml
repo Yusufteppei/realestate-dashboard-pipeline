@@ -36,6 +36,9 @@ services:
     
     depends_on:
       - db
+
+    restart: om-failure
+    
   
   pgadmin:
 
