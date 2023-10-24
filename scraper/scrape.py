@@ -253,4 +253,4 @@ def push_to_mysql_db():
 #print( fetch_page(df, 'https://www.propertypro.ng/property-for-rent/in/abuja/', 2) )
 rent = get_state_data('abuja')
 
-push_to_postgres_db(rent)
+push_to_postgres_db()

@@ -80,7 +80,7 @@ services:
 
 #####################################     UNDONE    ##############################
 
-  ##  INCLUDE GITHUB CI/CD AND DATA UPDATE
+  ##  INCLUDE GITHUB CI/CD AND DATA PERIODIC UPDATE
   #jenkins:
 
   #  image: jenkins/jenkins:2.414.3-alpine-jdk21-preview
@@ -95,7 +95,7 @@ services:
   #terraform:
   #  image: hashicorp/terraform:1.6
 
-  ##  SETUP CLOUD SERVER TO PULL GITHUB REPO AND RUN CONTAINERS
+  ##  SETUP PLAYBOOKS FOR CLOUD SERVER TO PULL GITHUB REPO AND RUN CONTAINERS
 
   #ansible: 
   #  image: image
