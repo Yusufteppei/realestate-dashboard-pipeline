@@ -27,7 +27,9 @@ engine = create_engine(f'postgresql+psycopg2://postgres:unhackable@{host}:5432/p
 
 df = pd.read_sql_table("properties", con=engine)
 
-print(df.head())
+MEAN_PRICE = df['price'].mean()
+MEDIAN_PRICE = df['price'].median()
+
 
 
 conn.close()
