@@ -51,7 +51,7 @@ app.layout = html.Div(
                         dbc.Row(
                             [
                                 dbc.Col(
-                                    html.Div("Mean Price"),
+                                    html.Div(["Mean Price"]),
                                     html.Div(MEAN_PRICE)
                                 )
                             ]
@@ -64,7 +64,7 @@ app.layout = html.Div(
                         dbc.Row(
                             [
                                 dbc.Col(
-                                    html.Div("Median Price"),
+                                    html.Div(["Median Price"]),
                                     html.Div(MEDIAN_PRICE)
                                 )
                             ]
@@ -78,7 +78,7 @@ app.layout = html.Div(
                         dbc.Row(
                             [
                                 dbc.Col(
-                                    html.Div("Property Count"),
+                                    html.Div(["Property Count"]),
                                     html.Div(PROPERTY_COUNT)
                                 )
                             ]
