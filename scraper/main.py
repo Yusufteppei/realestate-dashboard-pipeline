@@ -37,8 +37,9 @@ def push_to_postgres_db():
     cursor.execute("DROP TABLE IF EXISTS properties")
     conn.commit()
 
-    df.to_sql('properties', con=engine)
+    x = df.to_sql('properties', con=engine)
 
+    print("to sql", x)
     conn.close()
 
 
