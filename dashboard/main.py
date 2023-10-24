@@ -22,7 +22,7 @@ def get_data():
 
         df = pd.read_sql_table("properties", con=engine)
     except:
-        df = pd.DataFrame({'rent': []})
+        df = pd.DataFrame({'rent': [0]})
 
     return df
 
@@ -133,4 +133,4 @@ app.layout = html.Div(
 )
 
 if __name__=="__main__":
-    app.run_server(host="0.0.0.0", debug=True)
+    app.run_server(debug=True)
