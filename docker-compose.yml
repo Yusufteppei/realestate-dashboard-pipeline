@@ -74,15 +74,26 @@ services:
       - scraper
     
     restart: always
+
+#####################################     UNDONE    ##############################
+
+  ##  INCLUDE GITHUB CI/CD
+  #jenkins:
+
+  #  image: jenkins/jenkins:2.414.3-alpine-jdk21-preview
+
+  #  ports:
+  #    - 8004:8080
+  #    - 50000:50000
     
-  
-  jenkins:
 
-    image: jenkins/jenkins:2.414.3-alpine-jdk21-preview
+  ## AUTOMATE CLOUD INTEGRATION 
 
-    ports:
-      - 8004:8080
-      - 50000:50000
-    
+  #terraform:
+  #  image: hashicorp/terraform:1.6
 
+  ##  SETUP CLOUD SERVER TO PULL GITHUB REPO AND RUN CONTAINERS
+
+  #ansible: 
+  #  image: image
 
