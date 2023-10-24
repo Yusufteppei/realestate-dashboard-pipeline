@@ -27,6 +27,8 @@ CREATE_TABLE_QUERY = """
 POSTGRES_HOST = os.environ.get('POSTGRES_HOST')
 MYSQL_HOST = os.environ.get('MYSQL_HOST')
 
+ENGINE = create_engine(f'postgresql+psycopg2://postgres:unhackable@{POSTGRES_HOST}:5432/postgres')
+
 BATHS = []
 BEDS = []
 PRICE = []
@@ -188,7 +190,7 @@ def clean_data(state):
     
     print(rent.head())
     rent.to_csv(f'properties_{state.lower()}_rent.csv')
-    rent.to_sql(f'properties_{state.lower()}_rent.sql')
+    rent.to_sql(f'properties_{state.lower()}_rent.sql', con=ENGINE)
     
     return rent
    
