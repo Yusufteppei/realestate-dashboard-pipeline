@@ -226,6 +226,7 @@ def push_to_postgres_db():
     
     cursor = conn.cursor()
     cursor.execute("DROP TABLE IF EXISTS properties")
+    cursor.execute(CREATE_TABLE_QUERY)
     cursor.execute(COPY_CSV_QUERY)
     conn.commit()
 
