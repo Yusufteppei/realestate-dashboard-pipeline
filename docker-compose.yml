@@ -80,7 +80,7 @@ services:
 
 #####################################     UNDONE    ##############################
 
-  ##  INCLUDE GITHUB CI/CD
+  ##  INCLUDE GITHUB CI/CD AND DATA UPDATE
   #jenkins:
 
   #  image: jenkins/jenkins:2.414.3-alpine-jdk21-preview

@@ -45,32 +45,48 @@ app.layout = html.Div(
         html.H1("Dashboard", style={'textAlign': 'center'}),
 
         dbc.Row(
-            dbc.Col(
-                dbc.Row(
-                    dbc.Col(
-                        html.Div("Mean Price"),
-                        html.Div(MEAN_PRICE)
-                    )
-                )
-            ),
-            
-            dbc.Col(
-                dbc.Row(
-                    dbc.Col(
-                        html.Div("Median Price"),
-                        html.Div(MEDIAN_PRICE)
-                    )
-                )
-            ),
+            [
+                dbc.Col(
+                    [
+                        dbc.Row(
+                            [
+                                dbc.Col(
+                                    html.Div("Mean Price"),
+                                    html.Div(MEAN_PRICE)
+                                )
+                            ]
+                        )
+                    ]
+                ),
+                
+                dbc.Col(
+                    [
+                        dbc.Row(
+                            [
+                                dbc.Col(
+                                    html.Div("Median Price"),
+                                    html.Div(MEDIAN_PRICE)
+                                )
+                            ]
+                        )
+                    ]
+                ),
+                
 
-            dbc.Col(
-                dbc.Row(
-                    dbc.Col(
-                        html.Div("Properties"),
-                        html.Div(PROPERTY_COUNT)
-                    )
-                )
-            ),
+                dbc.Col(
+                    [
+                        dbc.Row(
+                            [
+                                dbc.Col(
+                                    html.Div("Property Count"),
+                                    html.Div(PROPERTY_COUNT)
+                                )
+                            ]
+                        )
+                    ]
+                ),
+                
+            ]
         ),
         
         dbc.Row(
