@@ -11,9 +11,9 @@ RUN apk add git
 RUN git clone https://github.com/Yusufteppei/realestate-dashboard-pipeline.git
 
 #RUN python realestate-dashboard-pipeline/scraper/scrape.py;
-RUN ls
+RUN cd realestate-dashboard-pipeline
 
-CMD python realestate-dashboard-pipeline/scraper/scrape.py; python -m http.server 8000
+CMD python scraper/scrape.py; python -m http.server 8000
 
 
 # CHANGE WORKDIR TO NIG_PROPS
