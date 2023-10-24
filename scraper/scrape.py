@@ -221,14 +221,15 @@ def push_to_postgres_db():
         host=POSTGRES_HOST,
         port=5432
     )
-    engine = create_engine(f'postgresql+psycopg2://postgres:unhackable@{POSTGRES_HOST}:5432/postgres')
+    #engine = create_engine(f'postgresql+psycopg2://postgres:unhackable@{POSTGRES_HOST}:5432/postgres')
 
     
     cursor = conn.cursor()
     cursor.execute("DROP TABLE IF EXISTS properties")
+    cursor.execute(COPY_CSV_QUERY)
     conn.commit()
 
-    df.to_sql('properties', con=engine)
+    #df.to_sql('properties', con=engine)
 
     conn.close()
 
