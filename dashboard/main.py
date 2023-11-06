@@ -2,7 +2,7 @@ import os
 import dash
 from dash import dcc
 import dash_bootstrap_components as dbc
-from dash import html
+from dash import html, dash_table
 import pandas as pd
 from sqlalchemy import create_engine
 import psycopg2 
@@ -31,6 +31,8 @@ df = get_data()
 MEAN_PRICE = df['rent'].mean()
 MEDIAN_PRICE = df['rent'].median()
 PROPERTY_COUNT = df.shape[0]
+
+
 
 
 
@@ -115,12 +117,8 @@ app.layout = html.Div(
                     )
                 ),
                 dbc.Col(
-                    dcc.Graph(
-                        figure={
-                            'data': [
-                                {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
-                            ]
-                        }
+                    dash_table.DataTable(
+                        df.to_dict('records'), [{"name": i, "id": i} for i in df.columns]
                     )
                 ),
                 

@@ -4,6 +4,7 @@ WORKDIR /dashboard
 
 RUN pip install dash pandas plotly dash_core_components sqlalchemy psycopg2-binary dash_bootstrap_components
 
+RUN pip install dash_design_kit
 
 RUN apk update
 
