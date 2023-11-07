@@ -34,8 +34,6 @@ PROPERTY_COUNT = df.shape[0]
 
 
 
-
-
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
@@ -95,6 +93,14 @@ app.layout = html.Div(
                 
             ]
         ),
+
+        dbc.Row(
+            dbc.Col(
+                    dash_table.DataTable(
+                        df.to_dict('records'), [{"name": i, "id": i} for i in df.columns]
+                    )
+            ),
+        ),
         
         dbc.Row(
             [
@@ -116,11 +122,7 @@ app.layout = html.Div(
                         }
                     )
                 ),
-                dbc.Col(
-                    dash_table.DataTable(
-                        df.to_dict('records'), [{"name": i, "id": i} for i in df.columns]
-                    )
-                ),
+                
                 
             ]
         ),    
