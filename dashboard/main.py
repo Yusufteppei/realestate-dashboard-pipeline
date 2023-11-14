@@ -21,8 +21,9 @@ def get_data():
         #cursor.execute("SELECT * FROM properties")
 
         df = pd.read_sql_table("properties", con=engine)
-    except:
-        df = pd.DataFrame({'rent': [0]})
+    except Exception as e:
+        raise e
+        #df = pd.DataFrame({'rent': [0]})
 
     return df
 
