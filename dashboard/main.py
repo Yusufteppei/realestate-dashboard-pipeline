@@ -15,7 +15,7 @@ host = os.environ.get('POSTGRES_HOST')
 def get_data():
     try:
         
-        engine = create_engine(f'postgresql+psycopg2://postgres:unhackable@{host}:5432/postgres')
+        engine = create_engine(f'postgresql://postgres:unhackable@{host}:5432/postgres')
 
         #cursor = conn.cursor()
         #cursor.execute("SELECT * FROM properties")

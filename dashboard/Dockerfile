@@ -2,9 +2,7 @@ FROM python:3.9-alpine3.15
 
 WORKDIR /dashboard
 
-RUN pip install dash pandas plotly dash_core_components sqlalchemy psycopg2-binary dash_bootstrap_components
-
-RUN pip install dash_design_kit
+RUN pip install -r reqs.txt
 
 RUN apk update
 
