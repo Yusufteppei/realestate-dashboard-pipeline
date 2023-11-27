@@ -29,11 +29,16 @@ def get_data():
 
 df = get_data()
 
+
 MEAN_PRICE = df['rent'].mean()
 MEDIAN_PRICE = df['rent'].median()
 PROPERTY_COUNT = df.shape[0]
 
+# ROOM CHART DATA
 
+ROOM_COUNTS = df['rooms'].value_counts().to_dict()
+ROOM_COUNTS_X = ROOM_COUNTS.keys()
+ROOM_COUNTS_Y = ROOM_COUNTS.values()
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -98,7 +103,7 @@ app.layout = html.Div(
         dbc.Row(
             dbc.Col(
                     dash_table.DataTable(
-                        df.to_dict('records'), [{"name": i, "id": i} for i in df.columns]
+                        df.head(20).to_dict('records'), [{"name": i, "id": i} for i in df.columns]
                     )
             ),
         ),
@@ -109,7 +114,7 @@ app.layout = html.Div(
                     dcc.Graph(
                         figure={
                             'data': [
-                                {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
+                                {'x': ROOM_COUNTS_X, 'y': ROOM_COUNTS_Y, 'type': 'bar', 'name':'Room counts'}
                             ]
                     }
                 ),

@@ -40,21 +40,21 @@ services:
     restart: on-failure
 
   
-  pgadmin:
+#  pgadmin:
 
-    image: dpage/pgadmin4
+#    image: dpage/pgadmin4
 
-    container_name: properties_pgadmin_container
+#    container_name: properties_pgadmin_container
 
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=root@root.com
-      - PGADMIN_DEFAULT_PASSWORD=unhackable
+#    environment:
+#      - PGADMIN_DEFAULT_EMAIL=root@root.com
+#      - PGADMIN_DEFAULT_PASSWORD=unhackable
 
-    ports:
-      - 8002:80
+#    ports:
+#      - 8002:80
 
-    depends_on:
-      - scraper
+#    depends_on:
+#      - scraper
 
 
   dashboard:
@@ -81,13 +81,13 @@ services:
 #####################################     UNDONE    ##############################
 
   ##  INCLUDE GITHUB CI/CD AND DATA PERIODIC UPDATE
-  jenkins:
+#  jenkins:
 
-    image: jenkins/jenkins:2.414.3-alpine-jdk21-preview
+#    image: jenkins/jenkins:2.414.3-alpine-jdk21-preview
 
-    ports:
-      - 8004:8080
-      - 50000:50000
+#    ports:
+#      - 8004:8080
+#      - 50000:50000
     
 
   ## AUTOMATE CLOUD INTEGRATION 
