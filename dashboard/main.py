@@ -36,7 +36,7 @@ PROPERTY_COUNT = df.shape[0]
 
 # ROOM CHART DATA
 
-ROOM_COUNTS = df['rooms'].value_counts().to_dict()
+ROOM_COUNTS = df['beds'].value_counts().to_dict()
 ROOM_COUNTS_X = ROOM_COUNTS.keys()
 ROOM_COUNTS_Y = ROOM_COUNTS.values()
 
