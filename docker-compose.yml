@@ -39,7 +39,8 @@ services:
 
     restart: on-failure
 
-  
+#   UNCOMMENT PGADMIN SECTION TO PROVISION PGADMIN IN NETWORK
+
 #  pgadmin:
 
 #    image: dpage/pgadmin4

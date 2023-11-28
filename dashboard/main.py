@@ -114,19 +114,11 @@ app.layout = html.Div(
                     dcc.Graph(
                         figure={
                             'data': [
-                                {'x': ROOM_COUNTS_X, 'y': ROOM_COUNTS_Y, 'type': 'bar', 'name':'Room counts'}
+                                #{'x': ROOM_COUNTS_X, 'y': ROOM_COUNTS_Y, 'type': 'bar', 'name':'Room counts'},
+                                {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
                             ]
                     }
                 ),
-                ),
-                dbc.Col(
-                    dcc.Graph(
-                        figure={
-                            'data': [
-                                {'x': [1,2,3], 'y': [1,2,3], 'type': 'bar', 'name':'Graph'}
-                            ]
-                        }
-                    )
                 ),
                 
                 
