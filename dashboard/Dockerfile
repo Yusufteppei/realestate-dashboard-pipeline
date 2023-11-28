@@ -8,6 +8,8 @@ RUN apk update
 
 RUN apk add git
 
+RUN apk add vim
+
 RUN git clone https://github.com/Yusufteppei/realestate-dashboard-pipeline.git
 
 EXPOSE 8050:8050

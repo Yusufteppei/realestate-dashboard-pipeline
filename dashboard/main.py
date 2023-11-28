@@ -103,7 +103,7 @@ app.layout = html.Div(
         dbc.Row(
             dbc.Col(
                     dash_table.DataTable(
-                        df.head(20).to_dict('records'), [{"name": i, "id": i} for i in df.columns]
+                        df.to_dict('records'), [{"name": i, "id": i} for i in df.columns]
                     )
             ),
         ),
