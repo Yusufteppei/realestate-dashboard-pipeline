@@ -9,6 +9,8 @@ import mysql.connector
                     
 from sqlalchemy import create_engine
    
+PAGE_LIMIT = 3 # 355
+
 POSTGRES_HOST = os.environ.get('POSTGRES_HOST')
 MYSQL_HOST = os.environ.get('MYSQL_HOST')
 
@@ -137,7 +139,7 @@ def fetch_all_pages(output_df, url):
             page += 1 
         except AttributeError:
             raise AttributeError
-        if page == 3:# 355:
+        if page == PAGE_LIMIT:# 355:
             break
 
 def count_(s):
